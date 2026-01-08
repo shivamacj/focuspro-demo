@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Thank You</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-KJ2496DF');
+  </script>
+  <!-- End Google Tag Manager -->
+</head>
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KJ2496DF"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+
+  <div class="container center">
+    <h1>Thank you for your order 🎉</h1>
+    <p>Your FocusPro Headphones are on the way.</p>
+  </div>
+
+ <script>
+  window.dataLayer = window.dataLayer || [];
+
+  setTimeout(function () {
+    const cart = JSON.parse(localStorage.getItem("cart"));
+
+    console.log("CART DATA:", cart); // DEBUG LINE
+
+    if (!cart) {
+      console.warn("Cart not found. Purchase event not fired.");
+      return;
+    }
+
+    // IMPORTANT: reset ecommerce
+    window.dataLayer.push({ ecommerce: null });
+
+    // Fire purchase event
+    window.dataLayer.push({
+      event: "purchase",
+      ecommerce: {
+        transaction_id: "FP-" + Date.now(),
+        currency: cart.currency,
+        value: cart.price * cart.quantity,
+        items: [cart]
+      }
+    });
+
+    console.log("Purchase event pushed to dataLayer");
+
+    // Clear cart AFTER push
+    localStorage.removeItem("cart");
+
+  }, 500);
+</script>
+
+</body>
+</html>
