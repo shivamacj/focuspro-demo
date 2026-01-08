@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/shashasi/public_html/focuspro-demo
+    - /bin/cp -R * $DEPLOYPATH
