@@ -14,7 +14,7 @@ const productData = {
   currency: "INR"
 };
 
-if (window.location.pathname.includes("product.html")) {
+if (window.location.pathname.includes("product")) {
   window.dataLayer = window.dataLayer || [];
   window.dataLayer.push({ ecommerce: null });
   window.dataLayer.push({
@@ -44,7 +44,7 @@ if (addToCartBtn) {
   });
 }
 
-if (window.location.pathname.includes("cart.html")) {
+if (window.location.pathname.includes("cart")) {
   const cart = JSON.parse(localStorage.getItem("cart"));
 
   if (cart) {
